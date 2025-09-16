@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .login-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+        .btn-login {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-login:hover {
+            background: linear-gradient(45deg, #5a6fd8 0%, #6a4191 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+        }
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-900">
+    <video class="background-video" autoplay muted loop>
+        <source src="https://files.catbox.moe/8ibdmn.mp4" type="video/mp4">
+        <source src="https://files.catbox.moe/8ibdmn.mp4" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    <div class="floating-particles">
+        <div class="particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 50%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 70%; left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 30%; left: 60%; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 80%; left: 40%; animation-delay: 4s;"></div>
+    </div>
+
+    <div class="login-container max-w-md w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-white">Login Dulu Bang</h2>
+            <p class="text-gray-300">Login Ke Web MT</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-user mr-2"></i>Username
+                </label>
+                <input type="text" id="username" name="username" required 
+                       class="input-field mt-1 block w-full px-4 py-3 bg-white bg-opacity-20 border border-gray-300 border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-0">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-lock mr-2"></i>Password
+                </label>
+                <input type="password" id="password" name="password" required 
+                       class="input-field mt-1 block w-full px-4 py-3 bg-white bg-opacity-20 border border-gray-300 border-opacity-30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-0">
+            </div>
+            <button type="submit" class="btn-login w-full py-3 px-4 text-white font-bold rounded-lg">
+                <i class="fas fa-sign-in-alt mr-2"></i>Login
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="#" class="text-gray-300 hover:text-white text-sm">Sc Ini Free Jika Ada Yang Menjual Lapor @Noxzz Attacker</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Simple hardcoded login (in real app, use authentication API)
+            if (username === 'ADMIN' && password === 'NoxzzVIP') {
+                alert('Login successful! Redirecting...');
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
+
+        // Add dynamic particle generation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.width = Math.random() * 10 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            document.querySelector('.floating-particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        setInterval(createParticle, 2000);
+    </script>
+</body>
+</html>
+</content>
+</create_file>

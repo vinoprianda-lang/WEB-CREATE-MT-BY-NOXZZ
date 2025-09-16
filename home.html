@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CREATE MT BAND FC BY @Noxzz Attacker</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1720;
+      --card:#182128;
+      --card-2:#233033;
+      --muted:#9aa6ad;
+      --input:#213036;
+      --placeholder:#7e8c90;
+      --accent1:#e63946;   
+      --accent2:#b5171e;   
+      --glass-shadow: 0 10px 30px rgba(3,9,12,0.6);
+      --card-radius:16px;
+    }
+
+    html,body {
+      height:100%;
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#e6f7f2;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Video background */
+    #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  body,html {
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    margin: 0;
+  }
+    
+  .content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 27rem;   /* biar nggak melebar */
+  margin: 0 auto;     /* center */
+  background: rgba(0,0,0,0.4); /* opsional biar teks kebaca */
+  border-radius: 12px; /* opsional biar cantik */
+  }
+
+  /* Gaya untuk pop-up */
+#popup-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: rgb(27, 26, 26);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.popup-content p {
+  text-align: left;
+}
+
+/* Menyembunyikan pop-up secara default */
+.hidden {
+  display: none !important;
+}
+
+/* Efek saat pop-up muncul */
+#popup-dialog.show .popup-content {
+  transform: scale(1);
+}
+
+/* Gaya tambahan untuk teks dan tombol */
+.popup-content h2 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.popup-content p {
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+#close-popup,
+.tutorial {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tutorial {
+  background-color: #007bff;
+  color: white;
+}
+
+#close-popup {
+  background-color: #dc3545;
+  color: white;
+}
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 20px;
+    }
+
+    .card{
+      width:25rem;
+      height: 35rem;
+      background: rgba(15, 24, 32, 0.25);
+      border-radius:var(--card-radius);
+      box-shadow: var(--glass-shadow);
+      padding:35px;
+      backdrop-filter: blur(10px);
+      align-content: center;
+    }
+
+    .card-inner{
+      background: rgba(24, 36, 40, 0.15);
+      border-radius:12px;
+      padding:20px;
+      backdrop-filter: blur(4px);
+    }
+
+    h1{
+      margin:5px 0 8px 0;
+      font-size:3rem;
+      letter-spacing:1px;
+      text-align:center;
+      font-weight:900;
+      color:#ed2132;
+      text-transform:uppercase;
+    }
+    h1 span{
+      display:block;
+      font-size:20px;
+      font-weight:600;
+      margin-top:4px;
+      color:#e94951;
+    }
+
+    p.subtitle{
+      margin:0 0 22px 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    form .field{
+      margin-bottom:14px;
+    }
+
+    input[type="text"], select{
+      width:100%;
+      box-sizing:border-box;
+      padding:14px 16px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.15);
+      background:var(--input);
+      color:#e8fdf4;
+      font-size:15px;
+      outline:none;
+    }
+
+    input::placeholder{ color:var(--placeholder); }
+    select{ padding-right:46px; }
+
+    .btn{
+      width:100%;
+      padding:14px 18px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:16px;
+      border:none;
+      cursor:pointer;
+      margin-top:8px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:#fff;
+    }
+
+    .tutorial{
+      width:100%;
+      padding:14px 18px;
+      border-radius:12px;
+      font-weight:600;
+      font-size:16px;
+      border:none;
+      cursor:pointer;
+      margin-top:8px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:#fff;
+    }
+
+    .hidden{ display:none; }
+
+    .note{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--placeholder);
+      text-align:center;
+    }
+
+    textarea {
+    width: 100%;
+    white-space: pre-wrap;
+    margin-top: 10px;
+    }
+
+    .telegram-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.telegram-btn img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #0088cc;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.telegram-btn img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="https://files.catbox.moe/8ibdmn.mp4" type="video/mp4">
+  </video>
+  <div class="content">
+  <div class="wrap">
+    <div class="card">
+      <div class="card-inner">
+        <h1>CREATE<br>MT VVIP <span>- By @Noxzz Attacker</span></h1>
+        <p class="subtitle"></p>
+        <form id="mtForm" autocomplete="off">
+          <!-- input link+name (opsi 1) -->
+          <div id="input-link-name" class="hidden">
+            <div class="field">
+              <input id="link" type="text" placeholder="{ link website }">
+            </div>
+            <div class="field">
+              <input id="name" type="text" placeholder="{ name }">
+            </div>
+          </div>
+
+          <!-- input nomor (opsi 2 & 3) -->
+          <div id="input-nomer" class="hidden">
+            <div class="field">
+              <input id="nomer" type="text" placeholder="62xxxxxxxxxxx">
+            </div>
+          </div>
+
+          <div class="field">
+            <select id="choice" required>
+              <option value="" disabled selected>Pilih Metode Banned</option>
+              <option value="1">MT Banned - Random</option>
+              <option value="2">MT Unbanned - Random</option>
+              <option value="3">MT To Permanent</option>
+            </select>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn">Generate MT</button>
+          <button class="tutorial">Tutorial Ban WA-Ori</button>
+
+<div id="popup-dialog" class="hidden">
+  <div class="popup-content">
+    <h2>Tutorial Banned<br>WA Originial</h2>
+    <p>
+WAJIB PUNYA NO PRIB UMUR 1TH LEBIH<br>REPORT DI TITIK 3 10X<br>REPORT AKUN 5X<br>BLOCK UNBLOCK BEBAS
+    </p>
+    <button id="close-popup">Tutup</button>
+  </div>
+</div>
+          <p class="note">MT Ini hanya dapat digunakan untuk pengguna Whatsapp Fake Chat</p>
+          <p class="subtitle">© 2025 @Noxzz Attacker</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <script>
+  const form = document.getElementById('mtForm');
+  const btn = document.getElementById('submitBtn');
+  const choiceSelect = document.getElementById('choice');
+  const inputLinkName = document.getElementById('input-link-name');
+  const inputNomer = document.getElementById('input-nomer');
+
+  // toggle input sesuai opsi
+  choiceSelect.addEventListener("change", () => {
+    inputLinkName.classList.add("hidden");
+    inputNomer.classList.add("hidden");
+    if (choiceSelect.value === "1") inputLinkName.classList.remove("hidden");
+    if (choiceSelect.value === "2" || choiceSelect.value === "3") inputNomer.classList.remove("hidden");
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'CREATE MT...';
+
+    const choice = choiceSelect.value;
+    const link = document.getElementById('link')?.value.trim();
+    const name = document.getElementById('name')?.value.trim();
+    const nomer = document.getElementById('nomer')?.value.trim();
+
+    let fileUrl = "";
+
+    if (choice === "1") {
+      const files = ["1.txt","2.txt","3.txt","4.txt","5.txt","6.txt","7.txt","8.txt","9.txt","10.txt","11.txt","12.txt","13.txt","14.txt","15.txt","16.txt","17.txt","18.txt","19.txt","20.txt"];
+      const randomIndex = Math.floor(Math.random() * files.length);
+      fileUrl = `mt/${files[randomIndex]}`;
+    }
+    if (choice === "2") {
+      const files = ["1.txt","2.txt","3.txt","4.txt","5.txt"];
+      const randomIndex = Math.floor(Math.random() * files.length);
+      fileUrl = `mt-unband/${files[randomIndex]}`;
+    }
+    if (choice === "3") {
+      fileUrl = "mt-perma/1.txt";
+    }
+
+    try {
+      const res = await fetch(fileUrl);
+      if (!res.ok) throw new Error("File tidak ditemukan");
+      let template = await res.text();
+
+      let resultText = template;
+      if (choice === "1") {
+        resultText = template.replaceAll("{link}", link).replaceAll(/{name}/g, name);
+      } else {
+        resultText = template.replaceAll(/{nomer}/g, nomer);
+      }
+
+      // hasil
+      const oldResult = document.getElementById("resultWrapper");
+      if (oldResult) oldResult.remove();
+
+      const resultBox = document.createElement('div');
+      resultBox.style.marginTop = "20px";
+      resultBox.style.padding = "14px";
+      resultBox.style.borderRadius = "12px";
+      resultBox.style.background = "rgba(255,255,255,0.08)";
+      resultBox.style.color = "#fff";
+      resultBox.style.fontSize = "15px";
+      resultBox.style.whiteSpace = "pre-line";
+      resultBox.textContent = resultText;
+
+      const wrapper = document.createElement('div');
+      wrapper.id = "resultWrapper";
+      wrapper.appendChild(resultBox);
+
+      const copyBtn = document.createElement('button');
+      copyBtn.textContent = "Salin Teks";
+      copyBtn.style.marginTop = "10px";
+      copyBtn.style.padding = "10px 14px";
+      copyBtn.style.border = "none";
+      copyBtn.style.borderRadius = "8px";
+      copyBtn.style.cursor = "pointer";
+      copyBtn.style.fontWeight = "600";
+      copyBtn.style.background = "linear-gradient(90deg, var(--accent1), var(--accent2))";
+      copyBtn.style.color = "#fff";
+
+      copyBtn.onclick = () => {
+        navigator.clipboard.writeText(resultText).then(() => {
+          copyBtn.textContent = "MT Berhasil Disalin!";
+          setTimeout(() => copyBtn.textContent = "Salin Teks", 2000);
+        });
+      };
+
+      wrapper.appendChild(copyBtn);
+      form.after(wrapper);
+
+    } catch (err) {
+      alert("Gagal ambil template: " + err);
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Generate More';
+    form.reset();
+  });
+
+  // Dapatkan elemen-elemen yang dibutuhkan
+  const tutorialButton = document.querySelector(".tutorial");
+  const popupDialog = document.getElementById("popup-dialog");
+  const closeButton = document.getElementById("close-popup");
+
+  // Tambahkan event listener untuk tombol "Lihat Tutorial"
+  tutorialButton.addEventListener("click", () => {
+    popupDialog.classList.remove("hidden"); // Menghilangkan kelas hidden
+    popupDialog.classList.add("show"); // Menambahkan kelas show untuk animasi
+  });
+
+  // Tambahkan event listener untuk tombol "Tutup"
+  closeButton.addEventListener("click", () => {
+    popupDialog.classList.add("hidden"); // Menambahkan kembali kelas hidden
+    popupDialog.classList.remove("show"); // Menghilangkan kelas show
+  });
+  </script>
+
+  <a href="https://t.me/NoxzzAttacker" target="_blank" class="telegram-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
+  </a>
+</body>
+</html>
